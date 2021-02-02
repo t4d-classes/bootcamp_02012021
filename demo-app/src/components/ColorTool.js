@@ -2,22 +2,13 @@ import { useState } from 'react';
 
 export const ColorTool = (props) => {
 
-  // const colorFormState = useState({ }); // returns an array (which we are treating like a tuple)
-  // const colorForm = colorFormState[0];
-  // const setColorForm = colorFormState[1];
-
-  // array destructuring
-  //      model data, update & re-render function
   const [ colorForm, setColorForm ] = useState({
     name: '', hexcode: '',
-  } /* this object is used only on the first render to initialize the state */);
+  });
 
   const change = (e) => {
-
-    // update the model, and trigger the re-render
     setColorForm({
-      ...colorForm, // copy the colorForm object properties into a new object
-      // computed property
+      ...colorForm,
       [ e.target.name ]: e.target.value,
     });
 
