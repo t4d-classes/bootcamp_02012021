@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
+import { ColorList } from './ColorList';
+
 export const ColorTool = (props) => {
 
   const [ colors, setColors ] = useState([ ...props.colors ]);
@@ -33,20 +35,16 @@ export const ColorTool = (props) => {
 
   };
 
-  console.log(colorForm);
-
-  const colorListItems = colors.map(color => <li key={color.id}>
-    {color.name}
-  </li>);
+  const deleteColor = (colorId) => {
+    setColors(colors.filter(c => c.id !== colorId));
+  };
 
   return (
     <>
       <header>
         <h1>{props.headerText}</h1>
       </header>
-      <ul>
-        {colorListItems}
-      </ul>
+      <ColorList colors={colors} onDeleteColor={deleteColor} />
       <form>
         <div>
           <label htmlFor="name-input">Name</label>
