@@ -4,11 +4,11 @@ import { ColorTool } from './components/ColorTool';
 import { CarTool } from './components/CarTool';
 
 const colorList = [
-  { id: 1, name: 'yellow' },
-  { id: 2, name: 'teal' },
-  { id: 3, name: 'orange' },
-  { id: 4, name: 'blue' },
-  { id: 5, name: 'green' },
+  { id: 1, name: 'yellow', hexcode: 'aaa', },
+  { id: 2, name: 'teal', hexcode: 'aaa', },
+  { id: 3, name: 'orange', hexcode: 'aaa', },
+  { id: 4, name: 'blue' , hexcode: 'aaa',},
+  { id: 5, name: 'green', hexcode: 'aaa', },
 ];
 
 const carList = [
@@ -18,7 +18,6 @@ const carList = [
 
 render(
   <>
-    {/* React.createElement(ColorTool, { colors: colorList, someProp: 'test' }) */}
     <ColorTool colors={colorList}
       headerText="My Color Tool" />
     <CarTool cars={carList} />

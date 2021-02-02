@@ -1,6 +1,9 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export const ColorTool = (props) => {
+
+  const [ colors, setColors ] = useState([ ...props.colors ]);
 
   const [ colorForm, setColorForm ] = useState({
     name: '', hexcode: '',
@@ -14,6 +17,22 @@ export const ColorTool = (props) => {
 
   };
 
+  const addColor = () => {
+
+    setColors([
+      ...colors,
+      {
+        ...colorForm,
+        id: Math.max(...colors.map(c => c.id), 0) + 1,
+      },
+    ]);
+
+    setColorForm({
+      name: '', hexcode: ''
+    });
+
+  };
+
   console.log(colorForm);
 
   return (
@@ -22,7 +41,7 @@ export const ColorTool = (props) => {
         <h1>{props.headerText}</h1>
       </header>
       <ul>
-        {props.colors.map(color => <li key={color.id}>
+        {colors.map(color => <li key={color.id}>
           {color.name}
         </li>)}
       </ul>
@@ -37,8 +56,23 @@ export const ColorTool = (props) => {
           <input type="text" id="hexcode-input" name="hexcode"
             value={colorForm.hexcode} onChange={change} />
         </div>
+        <button type="button" onClick={addColor}>Add Color</button>
       </form>
     </>
   );
 
+};
+
+ColorTool.defaultProps = {
+  headerText: 'Color Tool',
+  colors: [],
+};
+
+ColorTool.propTypes = {
+  headerText: PropTypes.string.isRequired,
+  colors: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    hexcode: PropTypes.string,
+  })).isRequired,
 };

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { toString } from '../utils';
+
 export const CarTool = (props) => {
 
   const [carForm, setCarForm] = useState({
@@ -9,7 +11,8 @@ export const CarTool = (props) => {
   const change = (e) => {
     setCarForm({
       ...carForm,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.type === 'number'
+        ? parseInt(e.target.value, 10) : e.target.value,
     });
 
   };
@@ -56,8 +59,8 @@ export const CarTool = (props) => {
         </div>
         <div>
           <label htmlFor="year-input">Year</label>
-          <input type="text" id="year-input" name="year"
-            value={carForm.year} onChange={change} />
+          <input type="number" id="year-input" name="year"
+            value={toString(carForm.year)} onChange={change} />
         </div>
         <div>
           <label htmlFor="color-input">Color</label>
@@ -66,8 +69,8 @@ export const CarTool = (props) => {
         </div>
         <div>
           <label htmlFor="price-input">Price</label>
-          <input type="text" id="price-input" name="price"
-            value={carForm.price} onChange={change} />
+          <input type="number" id="price-input" name="price"
+            value={toString(carForm.price)} onChange={change} />
         </div>
       </form>
     </>
