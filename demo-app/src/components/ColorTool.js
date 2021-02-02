@@ -35,15 +35,17 @@ export const ColorTool = (props) => {
 
   console.log(colorForm);
 
+  const colorListItems = colors.map(color => <li key={color.id}>
+    {color.name}
+  </li>);
+
   return (
     <>
       <header>
         <h1>{props.headerText}</h1>
       </header>
       <ul>
-        {colors.map(color => <li key={color.id}>
-          {color.name}
-        </li>)}
+        {colorListItems}
       </ul>
       <form>
         <div>
