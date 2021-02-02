@@ -16,8 +16,6 @@ render(
     {/* React.createElement(ColorTool, { colors: colorList, someProp: 'test' }) */}
     <ColorTool colors={colorList}
       headerText="My Color Tool" />
-    <ColorTool colors={colorList}
-      headerText="My Color Tool" />
     <CarTool />
   </>,
   document.querySelector('#root'),
