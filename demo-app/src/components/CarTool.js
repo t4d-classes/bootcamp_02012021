@@ -10,9 +10,12 @@ export const CarTool = (props) => {
   });
 
   const change = (e) => {
+
+    console.log(e.target.getAttribute('data-type'));
+
     setCarForm({
       ...carForm,
-      [e.target.name]: e.target.type === 'number'
+      [e.target.name]: e.target.getAttribute('data-type') === 'number'
         ? parseInt(e.target.value, 10) : e.target.value,
     });
 
@@ -39,7 +42,7 @@ export const CarTool = (props) => {
         </div>
         <div>
           <label htmlFor="year-input">Year</label>
-          <input type="number" id="year-input" name="year"
+          <input type="text" data-type="number" id="year-input" name="year"
             value={toString(carForm.year)} onChange={change} />
         </div>
         <div>
@@ -49,7 +52,7 @@ export const CarTool = (props) => {
         </div>
         <div>
           <label htmlFor="price-input">Price</label>
-          <input type="number" id="price-input" name="price"
+          <input type="text" data-type="number" id="price-input" name="price"
             value={toString(carForm.price)} onChange={change} />
         </div>
       </form>
