@@ -1,14 +1,16 @@
 import { useState } from 'react';
 
+import { CarsPropType } from '../prop-types/cars';
+import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
+import { ToolFooter } from './ToolFooter';
 
 export const CarTool = (props) => {
 
-  const [ cars, setCars ] = useState([ ...props.cars ]);
+  const [cars, setCars] = useState([...props.cars]);
 
   const addCar = (car) => {
-
     setCars([
       ...cars,
       {
@@ -18,15 +20,25 @@ export const CarTool = (props) => {
     ]);
   };
 
+  const deleteCar = (carId) => {
+    setCars(cars.filter(c => c.id !== carId));
+  };
 
   return (
     <>
-      <header>
-        <h1>Car Tool</h1>
-      </header>
-      <CarTable cars={cars} />
-      <CarForm buttonText="Add Car" onSubmitCar={addCar}  />
+      <ToolHeader headerText="Car Tool" />
+      <CarTable cars={cars} onDeleteCar={deleteCar} />
+      <CarForm buttonText="Add Car" onSubmitCar={addCar} />
+      <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
 
+};
+
+CarTool.defaultProps = {
+  cars: [],
+};
+
+CarTool.propTypes = {
+  cars: CarsPropType,
 };

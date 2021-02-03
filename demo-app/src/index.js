@@ -18,8 +18,7 @@ const carList = [
 
 render(
   <>
-    <ColorTool colors={colorList}
-      headerText="My Color Tool" />
+    <ColorTool colors={colorList} />
     <CarTool cars={carList} />
   </>,
   document.querySelector('#root'),

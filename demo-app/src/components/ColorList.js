@@ -1,24 +1,27 @@
-export const ColorList = (props) => {
+import PropTypes from 'prop-types';
 
-  const colorListItems = props.colors.map(color => {
+import { ColorsPropType } from '../prop-types/colors';
 
-    const deleteColor = () => props.onDeleteColor(color.id);
-  
-    return (
-      <li key={color.id}>
-        {color.name}
-        <button type="button"
-          onClick={deleteColor}>
-            X
-        </button>
-      </li>
-    ); 
-  });
+export const ColorList = ({ colors, onDeleteColor: deleteColor }) => {
 
   return (
     <ul>
-      {colorListItems}
+      {colors.map(color =>
+        <li key={color.id}>
+          {color.name}
+          <button type="button" onClick={() => deleteColor(color.id)}>X</button>
+        </li>
+      )}
     </ul>
   );
 
 };
+
+ColorList.defaultProps = {
+  colors: [],
+};
+
+ColorList.propTypes = {
+  colors: ColorsPropType,
+  onDeleteColor: PropTypes.func.isRequired,
+}
