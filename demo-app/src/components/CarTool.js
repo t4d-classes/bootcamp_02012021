@@ -6,11 +6,11 @@ import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
 import { ToolFooter } from './ToolFooter';
 
-export const CarTool = (props) => {
-
+export const CarTool = props => {
   const [cars, setCars] = useState([...props.cars]);
+  const [editCarId, setEditCarId] = useState(-1);
 
-  const addCar = (car) => {
+  const addCar = car => {
     setCars([
       ...cars,
       {
@@ -20,19 +20,23 @@ export const CarTool = (props) => {
     ]);
   };
 
-  const deleteCar = (carId) => {
+  const deleteCar = carId => {
     setCars(cars.filter(c => c.id !== carId));
   };
 
   return (
     <>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={cars} onDeleteCar={deleteCar} />
+      <CarTable
+        cars={cars}
+        editCarId={editCarId}
+        onEditCar={setEditCarId}
+        onDeleteCar={deleteCar}
+      />
       <CarForm buttonText="Add Car" onSubmitCar={addCar} />
       <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
-
 };
 
 CarTool.defaultProps = {
