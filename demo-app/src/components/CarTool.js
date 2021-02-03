@@ -18,10 +18,27 @@ export const CarTool = props => {
         id: Math.max(...cars.map(c => c.id), 0) + 1,
       },
     ]);
+    setEditCarId(-1);
+  };
+
+  const saveCar = car => {
+    const newCars = [...cars];
+    const carIndex = newCars.findIndex(c => c.id === car.id);
+    if (carIndex < 0) {
+      throw Error('the world is ending...');
+    }
+    newCars[carIndex] = car;
+    setCars(newCars);
+    setEditCarId(-1);
   };
 
   const deleteCar = carId => {
     setCars(cars.filter(c => c.id !== carId));
+    setEditCarId(-1);
+  };
+
+  const cancelCar = () => {
+    setEditCarId(-1);
   };
 
   return (
@@ -32,6 +49,8 @@ export const CarTool = props => {
         editCarId={editCarId}
         onEditCar={setEditCarId}
         onDeleteCar={deleteCar}
+        onSaveCar={saveCar}
+        onCancelCar={cancelCar}
       />
       <CarForm buttonText="Add Car" onSubmitCar={addCar} />
       <ToolFooter companyName="A Cool Company, Inc." />

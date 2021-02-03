@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const CarEditRow = ({ car }) => {
+export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
   const [carForm, setCarForm] = useState({ ...car });
 
   const change = e => {
@@ -11,6 +11,15 @@ export const CarEditRow = ({ car }) => {
           ? parseInt(e.target.value, 10)
           : e.target.value,
     });
+  };
+
+  const saveCar = () => {
+
+    onSaveCar({
+      ...carForm,
+      id: car.id,
+    });
+
   };
 
   return (
@@ -54,10 +63,10 @@ export const CarEditRow = ({ car }) => {
         />
       </td>
       <td>
-        <button type="button" onClick={() => null}>
+        <button type="button" onClick={saveCar}>
           Save
         </button>
-        <button type="button" onClick={() => null}>
+        <button type="button" onClick={cancelCar}>
           Cancel
         </button>
       </td>
