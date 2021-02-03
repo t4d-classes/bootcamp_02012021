@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+
+import { useForm } from '../hooks/useForm';
 
 const getInitialColorForm = () => ({
   name: '',
@@ -7,38 +8,41 @@ const getInitialColorForm = () => ({
 });
 
 export const ColorForm = ({ buttonText, onSubmitColor }) => {
-
-  const [colorForm, setColorForm] = useState(getInitialColorForm());
-
-  const change = e => {
-    setColorForm({
-      ...colorForm,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [colorForm, change, resetColorForm] = useForm(getInitialColorForm());
 
   const submitColor = () => {
     onSubmitColor({ ...colorForm });
 
-    setColorForm(getInitialColorForm());
+    resetColorForm();
   };
 
   return (
     <form>
       <div>
         <label htmlFor="name-input">Name</label>
-        <input type="text" id="name-input" name="name"
-          value={colorForm.name} onChange={change} />
+        <input
+          type="text"
+          id="name-input"
+          name="name"
+          value={colorForm.name}
+          onChange={change}
+        />
       </div>
       <div>
         <label htmlFor="hexcode-input">Hexcode</label>
-        <input type="text" id="hexcode-input" name="hexcode"
-          value={colorForm.hexcode} onChange={change} />
+        <input
+          type="text"
+          id="hexcode-input"
+          name="hexcode"
+          value={colorForm.hexcode}
+          onChange={change}
+        />
       </div>
-      <button type="button" onClick={submitColor}>{buttonText}</button>
+      <button type="button" onClick={submitColor}>
+        {buttonText}
+      </button>
     </form>
   );
-
 };
 
 ColorForm.defaultProps = {
