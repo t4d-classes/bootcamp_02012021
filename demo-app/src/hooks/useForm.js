@@ -6,7 +6,10 @@ export const useForm = initialForm => {
   const change = e => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.getAttribute('data-type') === 'number'
+          ? parseInt(e.target.value, 10)
+          : e.target.value,
     });
   };
 
