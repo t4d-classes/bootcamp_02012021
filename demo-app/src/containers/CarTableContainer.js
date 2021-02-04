@@ -1,5 +1,5 @@
 import { useCarToolStoreContext } from '../contexts/carToolStoreContext';
-import { CarTable } from './CarTable';
+import { CarTable } from '../components/CarTable';
 
 export const CarTableContainer = () => {
   const {
@@ -9,6 +9,7 @@ export const CarTableContainer = () => {
     deleteCar,
     saveCar,
     cancelCar,
+    updateSortField,
   } = useCarToolStoreContext();
 
   return (
@@ -19,6 +20,7 @@ export const CarTableContainer = () => {
       onDeleteCar={deleteCar}
       onSaveCar={saveCar}
       onCancelCar={cancelCar}
+      onUpdateSortField={updateSortField}
     />
   );
 };

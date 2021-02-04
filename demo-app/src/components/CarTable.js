@@ -11,17 +11,18 @@ export const CarTable = ({
   onDeleteCar: deleteCar,
   onSaveCar: saveCar,
   onCancelCar: cancelCar,
+  onUpdateSortField: updateSortField,
 }) => {
   return (
     <table>
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Year</th>
-          <th>Car</th>
-          <th>Price</th>
+          <th onClick={() => updateSortField('id')}>Id</th>
+          <th onClick={() => updateSortField('make')}>Make</th>
+          <th onClick={() => updateSortField('model')}>Model</th>
+          <th onClick={() => updateSortField('year')}>Year</th>
+          <th onClick={() => updateSortField('color')}>Car</th>
+          <th onClick={() => updateSortField('price')}>Price</th>
         </tr>
       </thead>
       <tbody>
