@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useList } from '../hooks/useList';
 import { ColorsPropType } from '../prop-types/colors';
 import { ToolHeader } from './ToolHeader';
