@@ -2,6 +2,14 @@ import { render } from 'react-dom';
 
 import { useColorToolStore } from './hooks/useColorToolStore';
 import { useCarToolStore } from './hooks/useCarToolStore';
+
+import { Layout } from './components/Layout';
+import { ToolHeader } from './components/ToolHeader';
+import { ToolFooter } from './components/ToolFooter';
+import { Home } from './components/Home';
+import { Menu } from './components/Menu';
+import { Sidebar } from './components/Sidebar';
+
 import { ColorTool } from './components/ColorTool';
 import { CarTool } from './components/CarTool';
 import { ColorToolStoreProvider } from './contexts/colorToolStoreContext';
@@ -55,9 +63,16 @@ const CarToolApp = () => {
 };
 
 render(
-  <>
-    <ColorToolApp />
-    <CarToolApp />
-  </>,
+  <Layout>
+    <ToolHeader headerText="The App" />
+    <Menu />
+    <main>
+      <Home />
+    </main>
+    <aside>
+      <Sidebar />
+    </aside>
+    <ToolFooter companyName="A Cool Company, Inc." />
+  </Layout>,
   document.querySelector('#root'),
 );
