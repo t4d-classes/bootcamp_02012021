@@ -1,12 +1,12 @@
-import { useList } from '../hooks/useList';
-import { ColorsPropType } from '../prop-types/colors';
+import { useColorToolStoreContext } from '../contexts/colorToolStoreContext';
+
 import { ToolHeader } from './ToolHeader';
 import { ColorList } from './ColorList';
 import { ColorForm } from './ColorForm';
 import { ToolFooter } from './ToolFooter';
 
-export const ColorTool = ({ colors: initialColors }) => {
-  const [colors, appendColor, , removeColor] = useList([...initialColors]);
+export const ColorTool = () => {
+  const { colors, appendColor, removeColor } = useColorToolStoreContext();
 
   return (
     <>
@@ -16,12 +16,4 @@ export const ColorTool = ({ colors: initialColors }) => {
       <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
-};
-
-ColorTool.defaultProps = {
-  colors: [],
-};
-
-ColorTool.propTypes = {
-  colors: ColorsPropType,
 };
