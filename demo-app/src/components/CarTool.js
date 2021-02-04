@@ -1,11 +1,10 @@
-import { useCarToolStore } from '../hooks/useCarToolStore';
-import { CarsPropType } from '../prop-types/cars';
+import { useCarToolStoreContext } from '../contexts/carToolStoreContext';
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
 import { ToolFooter } from './ToolFooter';
 
-export const CarTool = ({ cars: initialCars }) => {
+export const CarTool = () => {
   const {
     cars,
     editCarId,
@@ -14,7 +13,7 @@ export const CarTool = ({ cars: initialCars }) => {
     deleteCar,
     saveCar,
     cancelCar,
-  } = useCarToolStore(initialCars);
+  } = useCarToolStoreContext();
 
   return (
     <>
@@ -31,12 +30,4 @@ export const CarTool = ({ cars: initialCars }) => {
       <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
-};
-
-CarTool.defaultProps = {
-  cars: [],
-};
-
-CarTool.propTypes = {
-  cars: CarsPropType,
 };

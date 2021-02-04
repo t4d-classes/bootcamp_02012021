@@ -1,9 +1,11 @@
 import { render } from 'react-dom';
 
 import { useColorToolStore } from './hooks/useColorToolStore';
+import { useCarToolStore } from './hooks/useCarToolStore';
 import { ColorTool } from './components/ColorTool';
 import { CarTool } from './components/CarTool';
 import { ColorToolStoreProvider } from './contexts/colorToolStoreContext';
+import { CarToolStoreProvider } from './contexts/carToolStoreContext';
 
 const colorList = [
   { id: 1, name: 'yellow', hexcode: 'aaa' },
@@ -36,16 +38,26 @@ const ColorToolApp = () => {
   const colorToolStore = useColorToolStore(colorList);
 
   return (
-    <ColorToolStoreProvider value={colorToolStore}>
+    <ColorToolStoreProvider colorToolStore={colorToolStore}>
       <ColorTool /> {/* props.children */}
     </ColorToolStoreProvider>
+  );
+};
+
+const CarToolApp = () => {
+  const carToolStore = useCarToolStore(carList);
+
+  return (
+    <CarToolStoreProvider carToolStore={carToolStore}>
+      <CarTool /> {/* props.children */}
+    </CarToolStoreProvider>
   );
 };
 
 render(
   <>
     <ColorToolApp />
-    <CarTool cars={carList} />
+    <CarToolApp />
   </>,
   document.querySelector('#root'),
 );
