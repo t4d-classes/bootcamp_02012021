@@ -9,7 +9,7 @@ import {
 import { CalcTool } from '../components/CalcTool';
 
 export const CalcToolContainer = () => {
-  const result = useSelector(result => result);
+  const result = useSelector(state => state.result);
 
   const actions = bindActionCreators(
     {

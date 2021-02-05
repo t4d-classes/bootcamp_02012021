@@ -1,7 +1,8 @@
+import { combineReducers } from 'redux';
+
 import { ADD_ACTION, SUBTRACT_ACTION } from '../actions/calc-tool.actions';
 
-export const calcToolReducer = (state = 0, action) => {
-  console.log('state: ', state, 'action: ', action);
+export const resultReducer = (state = 0, action) => {
 
   switch (action.type) {
     case ADD_ACTION:
@@ -12,3 +13,7 @@ export const calcToolReducer = (state = 0, action) => {
       return state;
   }
 };
+
+export const calcToolReducer = combineReducers({
+  result: resultReducer,
+});
