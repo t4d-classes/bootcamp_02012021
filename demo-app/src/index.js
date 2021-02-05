@@ -1,25 +1,12 @@
 import { render } from 'react-dom';
 
-import { App } from './App';
+import { Provider } from 'react-redux';
+import { CalcToolContainer } from './containers/CalcToolContainer';
+import { calcToolStore } from './stores/calcToolStore';
 
-// const ColorToolApp = () => {
-//   const colorToolStore = useColorToolStore(colorList);
-
-//   return (
-//     <ColorToolStoreProvider colorToolStore={colorToolStore}>
-//       <ColorTool /> {/* props.children */}
-//     </ColorToolStoreProvider>
-//   );
-// };
-
-// const CarToolApp = () => {
-//   const carToolStore = useCarToolStore(carList);
-
-//   return (
-//     <CarToolStoreProvider carToolStore={carToolStore}>
-//       <CarTool /> {/* props.children */}
-//     </CarToolStoreProvider>
-//   );
-// };
-
-render(<App />, document.querySelector('#root'));
+render(
+  <Provider store={calcToolStore}>
+    <CalcToolContainer />
+  </Provider>,
+  document.querySelector('#root'),
+);
