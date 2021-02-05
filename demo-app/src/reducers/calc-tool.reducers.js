@@ -5,6 +5,7 @@ import {
   SUBTRACT_ACTION,
   MULTIPLY_ACTION,
   DIVIDE_ACTION,
+  DELETE_HISTORY_ENTRY_ACTION,
 } from '../actions/calc-tool.actions';
 
 // Reducer is a pure function
@@ -16,37 +17,39 @@ import {
 // 3. No side effects
 // 4. The only output value from the function is what you return from the function
 
-export const resultReducer = (state = 0, action) => {
+export const resultReducer = (result = 0, action) => {
   switch (action.type) {
     case ADD_ACTION:
-      return state + action.value;
+      return result + action.value;
     case SUBTRACT_ACTION:
-      return state - action.value;
+      return result - action.value;
     case MULTIPLY_ACTION:
-      return state * action.value;
+      return result * action.value;
     case DIVIDE_ACTION:
-      return state / action.value;
+      return result / action.value;
     default:
-      return state;
+      return result;
   }
 };
 
-export const historyReducer = (state = [], action) => {
+export const historyReducer = (history = [], action) => {
   switch (action.type) {
     case ADD_ACTION:
     case SUBTRACT_ACTION:
     case MULTIPLY_ACTION:
     case DIVIDE_ACTION:
       return [
-        ...state,
+        ...history,
         {
-          id: Math.max(...state.map(entry => entry.id), 0) + 1,
+          id: Math.max(...history.map(entry => entry.id), 0) + 1,
           opName: action.type,
           opValue: action.value,
         },
       ];
+    case DELETE_HISTORY_ENTRY_ACTION:
+      return history.filter(entry => entry.id !== action.entryId);
     default:
-      return state;
+      return history;
   }
 };
 

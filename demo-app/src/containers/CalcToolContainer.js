@@ -6,6 +6,7 @@ import {
   createSubtractAction,
   createMultiplyAction,
   createDivideAction,
+  createDeleteHistoryEntryAction,
 } from '../actions/calc-tool.actions';
 
 import { CalcTool } from '../components/CalcTool';
@@ -21,6 +22,7 @@ export const CalcToolContainer = () => {
       onSubtract: createSubtractAction,
       onMultiply: createMultiplyAction,
       onDivide: createDivideAction,
+      onDeleteHistoryEntry: createDeleteHistoryEntryAction,
     },
     useDispatch(),
   );

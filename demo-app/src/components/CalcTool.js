@@ -7,6 +7,7 @@ export const CalcTool = ({
   onSubtract,
   onMultiply,
   onDivide,
+  onDeleteHistoryEntry,
 }) => {
   const [numInput, setNumInput] = useState(0);
 
@@ -39,6 +40,11 @@ export const CalcTool = ({
         {history.map(entry => (
           <li key={entry.id}>
             {entry.opName} {entry.opValue}
+            <button
+              type="button"
+              onClick={() => onDeleteHistoryEntry(entry.id)}>
+              X
+            </button>
           </li>
         ))}
       </ul>
