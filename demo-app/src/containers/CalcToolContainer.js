@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   createAddAction,
   createSubtractAction,
+  createMultiplyAction,
+  createDivideAction,
 } from '../actions/calc-tool.actions';
 
 import { CalcTool } from '../components/CalcTool';
@@ -13,8 +15,11 @@ export const CalcToolContainer = () => {
 
   const actions = bindActionCreators(
     {
+      // onAdd: (value) => dispatch(createAddAction(value)),
       onAdd: createAddAction,
       onSubtract: createSubtractAction,
+      onMultiply: createMultiplyAction,
+      onDivide: createDivideAction,
     },
     useDispatch(),
   );
