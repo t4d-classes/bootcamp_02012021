@@ -12,9 +12,11 @@ export const Menu = () => {
         </li>
         <li>Add Color</li>
         <li>
-          <Link to="/car-tool">Car Tool</Link>
+          <Link to="/car-table">Car Table</Link>
         </li>
-        <li>Add Car</li>
+        <li>
+          <Link to="/add-car">Add Car</Link>
+        </li>
       </ul>
     </nav>
   );
