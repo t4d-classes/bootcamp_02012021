@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export const CalcTool = ({
   result,
+  history,
   onAdd,
   onSubtract,
   onMultiply,
@@ -34,6 +35,13 @@ export const CalcTool = ({
           /
         </button>
       </form>
+      <ul>
+        {history.map(entry => (
+          <li key={entry.id}>
+            {entry.opName} {entry.opValue}
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
