@@ -1,4 +1,5 @@
 import { render } from 'react-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { useColorToolStore } from './hooks/useColorToolStore';
 import { useCarToolStore } from './hooks/useCarToolStore';
@@ -63,16 +64,28 @@ const CarToolApp = () => {
 };
 
 render(
-  <Layout>
-    <ToolHeader headerText="The App" />
-    <Menu />
-    <main>
-      <Home />
-    </main>
-    <aside>
-      <Sidebar />
-    </aside>
-    <ToolFooter companyName="A Cool Company, Inc." />
-  </Layout>,
+  <Router>
+    <Layout>
+      <ToolHeader headerText="The App" />
+      <Menu />
+      <main>
+        <Switch>
+          <Route path="/color-tool">
+            <ColorToolApp />
+          </Route>
+          <Route path="/car-tool">
+            <CarToolApp />
+          </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+        </Switch>
+      </main>
+      <aside>
+        <Sidebar />
+      </aside>
+      <ToolFooter companyName="A Cool Company, Inc." />
+    </Layout>
+  </Router>,
   document.querySelector('#root'),
 );
