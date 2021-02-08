@@ -7,6 +7,7 @@ import {
   createMultiplyAction,
   createDivideAction,
   createDeleteHistoryEntryAction,
+  createClearAction,
 } from '../actions/calc-tool.actions';
 
 import { CalcTool } from '../components/CalcTool';
@@ -18,15 +19,17 @@ export const CalcToolContainer = () => {
 
   const actions = bindActionCreators(
     {
-      // onAdd: (value) => dispatch(createAddAction(value)),
       onAdd: createAddAction,
       onSubtract: createSubtractAction,
       onMultiply: createMultiplyAction,
       onDivide: createDivideAction,
       onDeleteHistoryEntry: createDeleteHistoryEntryAction,
+      onClear: createClearAction,
     },
     useDispatch(),
   );
+
+  // action.onAdd = (value) => dispatch(createAddAction(value))
 
   return (
     <CalcTool

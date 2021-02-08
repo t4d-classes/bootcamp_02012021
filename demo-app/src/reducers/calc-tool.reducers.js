@@ -6,6 +6,7 @@ import {
   MULTIPLY_ACTION,
   DIVIDE_ACTION,
   DELETE_HISTORY_ENTRY_ACTION,
+  CLEAR_ACTION,
 } from '../actions/calc-tool.actions';
 
 // Reducer is a pure function
@@ -30,6 +31,8 @@ export const resultReducer = (result = 0, action) => {
         return result;
       }
       return result / action.value;
+    case CLEAR_ACTION:
+      return 0;
     default:
       return result;
   }
@@ -60,6 +63,8 @@ export const historyReducer = (history = [], action) => {
           opValue: action.value,
         },
       ];
+    case CLEAR_ACTION:
+      return [];
     case DELETE_HISTORY_ENTRY_ACTION:
       return history.filter(entry => entry.id !== action.entryId);
     default:
@@ -73,9 +78,13 @@ const errorMessageReducer = (errorMessage = '', action) => {
   }
 
   if (
-    [ADD_ACTION, SUBTRACT_ACTION, MULTIPLY_ACTION, DIVIDE_ACTION].includes(
-      action.type,
-    )
+    [
+      ADD_ACTION,
+      SUBTRACT_ACTION,
+      MULTIPLY_ACTION,
+      DIVIDE_ACTION,
+      CLEAR_ACTION,
+    ].includes(action.type)
   ) {
     return '';
   }
