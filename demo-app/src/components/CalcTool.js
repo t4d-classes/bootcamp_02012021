@@ -3,6 +3,7 @@ import { useState } from 'react';
 export const CalcTool = ({
   result,
   history,
+  errorMessage,
   onAdd,
   onSubtract,
   onMultiply,
@@ -13,6 +14,7 @@ export const CalcTool = ({
 
   return (
     <>
+      {errorMessage && <div>{errorMessage}</div>}
       <form>
         <div>Result: {result}</div>
         <div>

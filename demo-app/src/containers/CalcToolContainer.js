@@ -14,6 +14,7 @@ import { CalcTool } from '../components/CalcTool';
 export const CalcToolContainer = () => {
   const result = useSelector(state => state.result);
   const history = useSelector(state => state.history);
+  const errorMessage = useSelector(state => state.errorMessage);
 
   const actions = bindActionCreators(
     {
@@ -27,5 +28,12 @@ export const CalcToolContainer = () => {
     useDispatch(),
   );
 
-  return <CalcTool result={result} history={history} {...actions} />;
+  return (
+    <CalcTool
+      result={result}
+      history={history}
+      errorMessage={errorMessage}
+      {...actions}
+    />
+  );
 };

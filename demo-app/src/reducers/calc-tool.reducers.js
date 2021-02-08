@@ -26,6 +26,9 @@ export const resultReducer = (result = 0, action) => {
     case MULTIPLY_ACTION:
       return result * action.value;
     case DIVIDE_ACTION:
+      if (action.value === 0) {
+        return result;
+      }
       return result / action.value;
     default:
       return result;
@@ -37,7 +40,18 @@ export const historyReducer = (history = [], action) => {
     case ADD_ACTION:
     case SUBTRACT_ACTION:
     case MULTIPLY_ACTION:
+      return [
+        ...history,
+        {
+          id: Math.max(...history.map(entry => entry.id), 0) + 1,
+          opName: action.type,
+          opValue: action.value,
+        },
+      ];
     case DIVIDE_ACTION:
+      if (action.value === 0) {
+        return history;
+      }
       return [
         ...history,
         {
@@ -53,6 +67,22 @@ export const historyReducer = (history = [], action) => {
   }
 };
 
+const errorMessageReducer = (errorMessage = '', action) => {
+  if (action.type === DIVIDE_ACTION && action.value === 0) {
+    return 'Cannot divide by zero.';
+  }
+
+  if (
+    [ADD_ACTION, SUBTRACT_ACTION, MULTIPLY_ACTION, DIVIDE_ACTION].includes(
+      action.type,
+    )
+  ) {
+    return '';
+  }
+
+  return errorMessage;
+};
+
 // export const calcToolReducer = (state = {}, action) => {
 //   return {
 //     ...state,
@@ -63,4 +93,5 @@ export const historyReducer = (history = [], action) => {
 export const calcToolReducer = combineReducers({
   result: resultReducer,
   history: historyReducer,
+  errorMessage: errorMessageReducer,
 });
