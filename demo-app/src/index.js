@@ -1,12 +1,5 @@
 import { render } from 'react-dom';
 
-import { Provider } from 'react-redux';
-import { CalcToolContainer } from './containers/CalcToolContainer';
-import { calcToolStore } from './stores/calcToolStore';
+import { App } from './App';
 
-render(
-  <Provider store={calcToolStore}>
-    <CalcToolContainer />
-  </Provider>,
-  document.querySelector('#root'),
-);
+render(<App />, document.querySelector('#root'));
