@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import { ColorsPropType } from '../prop-types/colors';
 
 export const ColorList = ({ colors, onDeleteColor: deleteColor }) => {
-
   return (
     <ul>
-      {colors.map(color =>
+      {!colors.length && <li>There are no colors.</li>}
+      {colors.map(color => (
         <li key={color.id}>
           {color.name}
-          <button type="button" onClick={() => deleteColor(color.id)}>X</button>
+          <button type="button" onClick={() => deleteColor(color.id)}>
+            X
+          </button>
         </li>
-      )}
+      ))}
     </ul>
   );
-
 };
 
 ColorList.defaultProps = {
@@ -24,4 +25,4 @@ ColorList.defaultProps = {
 ColorList.propTypes = {
   colors: ColorsPropType,
   onDeleteColor: PropTypes.func.isRequired,
-}
+};

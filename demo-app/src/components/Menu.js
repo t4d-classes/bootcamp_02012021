@@ -8,9 +8,11 @@ export const Menu = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/color-tool">Color Tool</Link>
+          <Link to="/color-list">Color List</Link>
         </li>
-        <li>Add Color</li>
+        <li>
+          <Link to="/add-color">Add Color</Link>
+        </li>
         <li>
           <Link to="/car-table">Car Table</Link>
         </li>

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-// import { useColorToolStore } from './hooks/useColorToolStore';
+import { colorToolStore } from './stores/colorToolStore';
 import { useCarToolStore } from './hooks/useCarToolStore';
 
 import { Layout } from './components/Layout';
@@ -10,11 +11,10 @@ import { Home } from './components/Home';
 import { Menu } from './components/Menu';
 import { Sidebar } from './components/Sidebar';
 
-// import { ColorTool } from './components/ColorTool';
-// import { CarTool } from './components/CarTool';
-// import { ColorToolStoreProvider } from './contexts/colorToolStoreContext';
 import { CarToolStoreProvider } from './contexts/carToolStoreContext';
 
+import { ColorListContainer } from './containers/ColorListContainer';
+import { AddColorFormContainer } from './containers/AddColorFormContainer';
 import { CarTableContainer } from './containers/CarTableContainer';
 import { AddCarFormContainer } from './containers/AddCarFormContainer';
 
@@ -50,32 +50,37 @@ export function App() {
 
   return (
     <Router>
-      <CarToolStoreProvider carToolStore={carToolStore}>
-        <Layout>
-          <ToolHeader headerText="The App" />
-          <Menu />
-          <main>
-            <Switch>
-              {/* <Route path="/color-tool">
-                <ColorToolApp />
-              </Route> */}
-              <Route path="/car-table">
-                <CarTableContainer />
-              </Route>
-              <Route path="/add-car">
-                <AddCarFormContainer />
-              </Route>
-              <Route path="/" exact>
-                <Home />
-              </Route>
-            </Switch>
-          </main>
-          <aside>
-            <Sidebar />
-          </aside>
-          <ToolFooter companyName="A Cool Company, Inc." />
-        </Layout>
-      </CarToolStoreProvider>
+      <Provider store={colorToolStore}>
+        <CarToolStoreProvider carToolStore={carToolStore}>
+          <Layout>
+            <ToolHeader headerText="The App" />
+            <Menu />
+            <main>
+              <Switch>
+                <Route path="/color-list">
+                  <ColorListContainer />
+                </Route>
+                <Route path="/add-color">
+                  <AddColorFormContainer />
+                </Route>
+                <Route path="/car-table">
+                  <CarTableContainer />
+                </Route>
+                <Route path="/add-car">
+                  <AddCarFormContainer />
+                </Route>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+              </Switch>
+            </main>
+            <aside>
+              <Sidebar />
+            </aside>
+            <ToolFooter companyName="A Cool Company, Inc." />
+          </Layout>
+        </CarToolStoreProvider>
+      </Provider>
     </Router>
   );
 }
