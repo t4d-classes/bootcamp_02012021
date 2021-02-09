@@ -19,6 +19,9 @@ export const Menu = () => {
         <li>
           <Link to="/add-car">Add Car</Link>
         </li>
+        <li>
+          <Link to="/calc-tool">Calc Tool</Link>
+        </li>
       </ul>
     </nav>
   );

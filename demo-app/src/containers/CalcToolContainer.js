@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { resultSelector } from '../selectors/calc-tool.selectors';
 import {
   createAddAction,
   createSubtractAction,
@@ -13,7 +14,7 @@ import {
 import { CalcTool } from '../components/CalcTool';
 
 export const CalcToolContainer = () => {
-  const result = useSelector(state => state.result);
+  const result = useSelector(resultSelector);
   const history = useSelector(state => state.history);
   const errorMessage = useSelector(state => state.errorMessage);
 
@@ -28,8 +29,6 @@ export const CalcToolContainer = () => {
     },
     useDispatch(),
   );
-
-  // action.onAdd = (value) => dispatch(createAddAction(value))
 
   return (
     <CalcTool

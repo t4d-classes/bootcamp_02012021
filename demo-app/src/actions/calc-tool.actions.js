@@ -13,4 +13,4 @@ export const createDeleteHistoryEntryAction = entryId => ({
   type: DELETE_HISTORY_ENTRY_ACTION,
   entryId,
 });
-export const createClearAction = () => ({ type: DIVIDE_ACTION });
+export const createClearAction = () => ({ type: CLEAR_ACTION });

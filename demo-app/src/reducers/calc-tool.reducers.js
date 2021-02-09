@@ -18,26 +18,6 @@ import {
 // 3. No side effects
 // 4. The only output value from the function is what you return from the function
 
-export const resultReducer = (result = 0, action) => {
-  switch (action.type) {
-    case ADD_ACTION:
-      return result + action.value;
-    case SUBTRACT_ACTION:
-      return result - action.value;
-    case MULTIPLY_ACTION:
-      return result * action.value;
-    case DIVIDE_ACTION:
-      if (action.value === 0) {
-        return result;
-      }
-      return result / action.value;
-    case CLEAR_ACTION:
-      return 0;
-    default:
-      return result;
-  }
-};
-
 export const historyReducer = (history = [], action) => {
   switch (action.type) {
     case ADD_ACTION:
@@ -92,15 +72,7 @@ const errorMessageReducer = (errorMessage = '', action) => {
   return errorMessage;
 };
 
-// export const calcToolReducer = (state = {}, action) => {
-//   return {
-//     ...state,
-//     result: resultReducer(state.result, action),
-//   };
-// };
-
 export const calcToolReducer = combineReducers({
-  result: resultReducer,
   history: historyReducer,
   errorMessage: errorMessageReducer,
 });

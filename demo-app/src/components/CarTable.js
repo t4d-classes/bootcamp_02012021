@@ -23,9 +23,15 @@ export const CarTable = ({
           <th onClick={() => updateSortField('year')}>Year</th>
           <th onClick={() => updateSortField('color')}>Car</th>
           <th onClick={() => updateSortField('price')}>Price</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
+        {!cars.length && (
+          <tr>
+            <td colSpan="7">There are no cars.</td>
+          </tr>
+        )}
         {cars.map(car =>
           car.id === editCarId ? (
             <CarEditRow

@@ -6,8 +6,6 @@ body {
 }
 
 .container {
-  border: 2px solid red;
-
   position: fixed;
 
   top: 0;

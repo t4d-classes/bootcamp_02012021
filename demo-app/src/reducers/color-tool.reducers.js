@@ -4,15 +4,7 @@ import {
   DELETE_COLOR_ACTION,
 } from '../actions/color-tool.actions';
 
-const colorList = [
-  { id: 1, name: 'yellow', hexcode: 'aaa' },
-  { id: 2, name: 'teal', hexcode: 'aaa' },
-  { id: 3, name: 'orange', hexcode: 'aaa' },
-  { id: 4, name: 'blue', hexcode: 'aaa' },
-  { id: 5, name: 'green', hexcode: 'aaa' },
-];
-
-const colorsReducer = (colors = colorList, action) => {
+const colorsReducer = (colors = [], action) => {
   switch (action.type) {
     case ADD_COLOR_ACTION:
       return [
