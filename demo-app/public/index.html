@@ -131,7 +131,7 @@
       // console.dir(fn);
     </script> -->
 
-    <script>
+    <!-- <script>
       // setTimeout(() => {
       //   console.log('a');
       // }, 0)
@@ -156,21 +156,111 @@
       // 1. You cannot wrap the allDone function in its own setTimeout
       // 2. All three setTimeouts must be called in the same task
 
-      function allDone() {
-        console.log('all done');
-      }
+      // let counter = 0;
 
-      setTimeout(() => {
-        console.log('a');
-      }, delay());
+      // function allDone() {
+      //   console.log('all done');
+      // }
 
-      setTimeout(() => {
-        console.log('b');
-      }, delay());
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('a');
+      //   counter--;
+      //   if (counter === 0) {
+      //     allDone();
+      //   }
+      // }, delay());
 
-      setTimeout(() => {
-        console.log('c');
-      }, delay());
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('b');
+      //   counter--;
+      //   if (counter === 0) {
+      //     allDone();
+      //   }
+      // }, delay());
+
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('c');
+      //   counter--;
+      //   if (counter === 0) {
+      //     allDone();
+      //   }
+      // }, delay());
+    </script> -->
+
+    <!-- <script>
+      // class Promise {
+
+      //   constructor(fn) {
+
+      //     this.thenFns = [];
+      //     this.catchFns = [];
+
+      //     const resolveFn = (data) => {
+      //       this.thenFns.forEach(fn => fn(data));
+      //     };
+
+      //     const rejectFn = (data) => {
+      //       this.catchFns.forEach(fn => fn(data));
+      //     };
+
+      //     fn(resolveFn, rejectFn);
+      //   }
+
+      //   then(fn) {
+      //     this.thenFns.push(fn);
+      //   }
+
+      //   catch(fn) {
+      //     this.catchFns.push(fn);
+      //   }
+
+      // }
+
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
+
+      console.log('1. creating promise');
+      const p = new Promise((resolve, reject) => {
+        console.log('2. call settimeout');
+        setTimeout(() => {
+          console.log('5. call resolve with data');
+          reject('a');
+        }, delay());
+      });
+
+      console.log('3. call then, passing a function ref');
+      p.then(result => {
+        console.log('6. output result');
+        console.log(result);
+      }).catch(result => {
+        console.log('something went wrong: ' + result);
+      });
+
+      console.log('4. output waiting...');
+      console.log('waiting');
+    </script> -->
+
+    <script>
+      const xhr = new XMLHttpRequest();
+
+      xhr.addEventListener('readystatechange', () => {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+          console.log(JSON.parse(xhr.responseText));
+        }
+      });
+
+      xhr.open('GET', 'http://localhost:3060/cars');
+      xhr.send();
+
+      // Lab Exercise
+
+      // Using promises to implement the myFetch function... Do not worry about error handling.
+      // I should be able to paste the following line of code, as is, in your code and is should work.
+
+      // myFetch('http://localhost:3060/cars').then(cars => console.log(cars));
+    
     </script>
   </body>
 </html>
