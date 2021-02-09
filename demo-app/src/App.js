@@ -18,13 +18,7 @@ import { AddColorFormContainer } from './containers/AddColorFormContainer';
 import { CarTableContainer } from './containers/CarTableContainer';
 import { AddCarFormContainer } from './containers/AddCarFormContainer';
 
-// const colorList = [
-//   { id: 1, name: 'yellow', hexcode: 'aaa' },
-//   { id: 2, name: 'teal', hexcode: 'aaa' },
-//   { id: 3, name: 'orange', hexcode: 'aaa' },
-//   { id: 4, name: 'blue', hexcode: 'aaa' },
-//   { id: 5, name: 'green', hexcode: 'aaa' },
-// ];
+
 
 const carList = [
   {
