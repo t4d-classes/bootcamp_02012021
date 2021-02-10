@@ -29,4 +29,14 @@ export const resolvers = {
       ).then((res) => res.json());
     },
   },
+  Mutation: {
+    appendAuthor(_, args) {
+      return fetch('http://localhost:5050/authors', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(args.author)
+      })
+        .then(res => res.json())
+    },
+  },
 };
