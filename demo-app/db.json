@@ -1,8 +1,25 @@
 {
   "colors": [
-    { "id": 1, "name": "red", "hexcode": "#ff0000" },
-    { "id": 2, "name": "green", "hexcode": "#00ff00" },
-    { "id": 3, "name": "blue", "hexcode": "#0000ff" }
+    {
+      "id": 1,
+      "name": "red",
+      "hexcode": "#ff0000"
+    },
+    {
+      "id": 2,
+      "name": "green",
+      "hexcode": "#00ff00"
+    },
+    {
+      "id": 3,
+      "name": "blue",
+      "hexcode": "#0000ff"
+    },
+    {
+      "name": "a",
+      "hexcode": "a",
+      "id": 4
+    }
   ],
   "cars": [
     {

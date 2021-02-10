@@ -13,7 +13,7 @@ export const ColorList = ({
     () => {
       refreshColors();
     },
-    [] /* run this on the initial load only */,
+    [refreshColors] /* run this on the initial load only */,
   );
 
   return (

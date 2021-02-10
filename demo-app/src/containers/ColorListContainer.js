@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -11,12 +12,20 @@ import { ColorList } from '../components/ColorList';
 export const ColorListContainer = () => {
   const isLoading = useSelector(state => state.isLoading);
   const colors = useSelector(state => state.colors);
-  const actions = bindActionCreators(
-    {
-      onRefreshColors: refreshColors,
-      onDeleteColor: createDeleteColorAction,
-    },
-    useDispatch(),
+
+  // the dispatch function reference, never changes
+  const dispatch = useDispatch();
+
+  const actions = useMemo(
+    () =>
+      bindActionCreators(
+        {
+          onRefreshColors: refreshColors,
+          onDeleteColor: createDeleteColorAction,
+        },
+        dispatch,
+      ),
+    [dispatch],
   );
 
   return <ColorList colors={colors} isLoading={isLoading} {...actions} />;

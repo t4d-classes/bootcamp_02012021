@@ -1,16 +1,23 @@
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { createAddColorAction } from '../actions/color-tool.actions';
+import { addColor } from '../actions/color-tool.actions';
 
 import { ColorForm } from '../components/ColorForm';
 
 export const AddColorFormContainer = () => {
-  const actions = bindActionCreators(
-    {
-      onAddColor: createAddColorAction,
-    },
-    useDispatch(),
+  const dispatch = useDispatch();
+
+  const actions = useMemo(
+    () =>
+      bindActionCreators(
+        {
+          onAddColor: addColor,
+        },
+        dispatch,
+      ),
+    [dispatch],
   );
 
   return (
