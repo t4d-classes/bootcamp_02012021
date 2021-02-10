@@ -242,25 +242,37 @@
       console.log('waiting');
     </script> -->
 
-    <script>
-      const xhr = new XMLHttpRequest();
+    <!-- <script>
+      // const myFetch = url => {
+      //   return new Promise(resolve => {
+      //     const xhr = new XMLHttpRequest();
 
-      xhr.addEventListener('readystatechange', () => {
-        if (xhr.status === 200 && xhr.readyState === 4) {
-          console.log(JSON.parse(xhr.responseText));
-        }
-      });
+      //     xhr.addEventListener('readystatechange', () => {
+      //       if (xhr.status === 200 && xhr.readyState === 4) {
+      //         resolve(JSON.parse(xhr.responseText));
+      //       }
+      //     });
 
-      xhr.open('GET', 'http://localhost:3060/cars');
-      xhr.send();
+      //     xhr.open('GET', url);
+      //     xhr.send();
+      //   });
+      // };
 
       // Lab Exercise
 
       // Using promises to implement the myFetch function... Do not worry about error handling.
       // I should be able to paste the following line of code, as is, in your code and is should work.
 
-      // myFetch('http://localhost:3060/cars').then(cars => console.log(cars));
-    
-    </script>
+      const getCars = () =>
+        fetch('http://localhost:3060/cars').then(res => res.json());
+
+      const getColors = () =>
+        fetch('http://localhost:3060/colors').then(res => res.json());
+
+      // multiple operations at once
+      Promise.all([getCars(), getColors()]).then(results => {
+        console.log(results);
+      });
+    </script> -->
   </body>
 </html>
