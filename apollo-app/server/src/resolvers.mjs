@@ -34,9 +34,26 @@ export const resolvers = {
       return fetch('http://localhost:5050/authors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(args.author)
-      })
-        .then(res => res.json())
+        body: JSON.stringify(args.author),
+      }).then((res) => res.json());
+    },
+    appendBook(_, args) {
+      return fetch('http://localhost:5050/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(args.book),
+      }).then((res) => res.json());
+    },
+    removeBook(_, args) {
+      return fetch(
+        'http://localhost:5050/books/' + encodeURIComponent(args.bookId),
+      ).then((res) => res.json())
+      .then(book => {
+        return fetch(
+          'http://localhost:5050/books/' + encodeURIComponent(args.bookId),
+          { method: 'DELETE' },
+        ).then(() => book);
+      });
     },
   },
 };
