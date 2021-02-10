@@ -1,18 +1,33 @@
 import { useQuery, gql } from "@apollo/client";
 
-const MESSAGE_QUERY = gql`
-  query GetMessage {
-    message
+const ALL_AUTHORS_QUERY = gql`
+  query AllAuthors {
+    authors {
+      id
+      firstName
+      lastName
+      phoneNumber
+    }
   }
 `;
 
 function App() {
-  const { loading, error, data } = useQuery(MESSAGE_QUERY);
+  const { loading, error, data } = useQuery(ALL_AUTHORS_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return <div>{data.message}</div>;
+  return (
+    <div>
+      <ul>
+        {data.authors.map((author) => (
+          <li key={author.id}>
+            {author.firstName} {author.lastName}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default App;
