@@ -5,6 +5,7 @@ export const typeDefs = gql`
     message: String
     authors: [Author]
     books: [Book]
+    author(authorId: ID): Author
   }
 
   type Author {

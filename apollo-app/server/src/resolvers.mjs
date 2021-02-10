@@ -15,5 +15,10 @@ export const resolvers = {
     books() {
       return fetch('http://localhost:5050/books').then((res) => res.json());
     },
+    author(_, args) {
+      return fetch(
+        'http://localhost:5050/authors/' + encodeURIComponent(args.authorId),
+      ).then((res) => res.json());
+    },
   },
 };
