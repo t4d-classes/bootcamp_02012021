@@ -20,5 +20,13 @@ export const resolvers = {
         'http://localhost:5050/authors/' + encodeURIComponent(args.authorId),
       ).then((res) => res.json());
     },
+    filteredBooks(_, args) {
+      return fetch(
+        'http://localhost:5050/books?' +
+          encodeURIComponent(args.fieldName) +
+          '=' +
+          encodeURIComponent(args.fieldValue),
+      ).then((res) => res.json());
+    },
   },
 };

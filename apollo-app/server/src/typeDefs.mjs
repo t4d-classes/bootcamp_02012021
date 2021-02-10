@@ -6,6 +6,7 @@ export const typeDefs = gql`
     authors: [Author]
     books: [Book]
     author(authorId: ID): Author
+    filteredBooks(fieldName: String, fieldValue: String): [Book]
   }
 
   type Author {
@@ -23,5 +24,5 @@ export const typeDefs = gql`
     category: String
     price: Float
     quantity: Int
-  }  
+  }
 `;
