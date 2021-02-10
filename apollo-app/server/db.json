@@ -59,30 +59,6 @@
       "lastName": "a",
       "phoneNumber": "a",
       "id": 10
-    },
-    {
-      "firstName": "b",
-      "lastName": "b",
-      "phoneNumber": "b",
-      "id": 11
-    },
-    {
-      "firstName": "c",
-      "lastName": "c",
-      "phoneNumber": "c",
-      "id": 12
-    },
-    {
-      "firstName": "a",
-      "lastName": "a",
-      "phoneNumber": "a",
-      "id": 13
-    },
-    {
-      "firstName": "Bob",
-      "lastName": "Jenkins",
-      "phoneNumber": "1-800-123-1234",
-      "id": 14
     }
   ],
   "books": [

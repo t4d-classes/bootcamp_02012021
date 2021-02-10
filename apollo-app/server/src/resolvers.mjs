@@ -47,13 +47,18 @@ export const resolvers = {
     removeBook(_, args) {
       return fetch(
         'http://localhost:5050/books/' + encodeURIComponent(args.bookId),
-      ).then((res) => res.json())
-      .then(book => {
-        return fetch(
-          'http://localhost:5050/books/' + encodeURIComponent(args.bookId),
-          { method: 'DELETE' },
-        ).then(() => book);
-      });
+      )
+        .then((res) => res.json())
+        .then((book) => {
+          return fetch(
+            'http://localhost:5050/books/' + encodeURIComponent(args.bookId),
+            { method: 'DELETE' },
+          ).then(() => book);
+        });
+      // return fetch(
+      //   'http://localhost:5050/books/' + encodeURIComponent(args.bookId),
+      //   { method: 'DELETE' },
+      // ).then(() => args.bookId);
     },
   },
 };

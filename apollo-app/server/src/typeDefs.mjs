@@ -12,7 +12,7 @@ export const typeDefs = gql`
   type Mutation {
     appendAuthor(author: NewAuthor): Author
     appendBook(book: NewBook): Book
-    removeBook(bookId: ID): Book
+    removeBook(bookId: ID): ID
   }
 
   type Author {
