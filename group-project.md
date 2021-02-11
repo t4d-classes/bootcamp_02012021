@@ -2,7 +2,7 @@
 
 Welcome to the Final Group Project!
 
-After reviewing this document, I will place you into breakout rooms. The breakout rooms will be active until 5pm PDT today, 9am to 5pm PDT Thursday, and 9am to 10am on Friday. If your team is working outside of those times, I would recommend using BlueJeans to meet. Please do not work on Veteran's Day.
+After reviewing this document, I will place you into breakout rooms. The breakout rooms will be active until 5pm PDT today, 9am to 5pm PDT Thursday, and 9am to 10am on Friday. If your team is working outside of those times, I would recommend using BlueJeans to meet.
 
 I am available by Slack the entire project time over the three days except I am sleeping.
 
