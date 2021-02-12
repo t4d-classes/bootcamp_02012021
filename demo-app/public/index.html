@@ -274,5 +274,32 @@
         console.log(results);
       });
     </script> -->
+    <!-- <script>
+      'use strict';
+
+      function doIt() {
+        console.log(this);
+      }
+
+      doIt();
+
+      window.doIt();
+
+      const o = {
+        id: 2,
+        doIt: doIt,
+      };
+
+      o.doIt();
+
+      console.log(window.doIt === o.doIt);
+
+      function setTimeout(fn, delay) {
+        // some delay
+        fn();
+      }
+
+      setTimeout(() => o.doIt(), 2000);
+    </script> -->
   </body>
 </html>
